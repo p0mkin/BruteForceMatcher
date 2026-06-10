@@ -36,6 +36,9 @@ partial class Form1
         checkBox1 = new System.Windows.Forms.CheckBox();
         progressBar1 = new System.Windows.Forms.ProgressBar();
         label1 = new System.Windows.Forms.Label();
+        numGenLenght = new System.Windows.Forms.NumericUpDown();
+        button4 = new System.Windows.Forms.Button();
+        ((System.ComponentModel.ISupportInitialize)numGenLenght).BeginInit();
         SuspendLayout();
         // 
         // button1
@@ -107,11 +110,34 @@ partial class Form1
         label1.Text = "Elapsed Time:";
         label1.Click += label1_Click;
         // 
+        // numGenLenght
+        // 
+        numGenLenght.Location = new System.Drawing.Point(389, 90);
+        numGenLenght.Maximum = new decimal(new int[] { 16, 0, 0, 0 });
+        numGenLenght.Minimum = new decimal(new int[] { 4, 0, 0, 0 });
+        numGenLenght.Name = "numGenLenght";
+        numGenLenght.Size = new System.Drawing.Size(37, 27);
+        numGenLenght.TabIndex = 7;
+        numGenLenght.Value = new decimal(new int[] { 4, 0, 0, 0 });
+        numGenLenght.ValueChanged += numericUpDown1_ValueChanged;
+        // 
+        // button4
+        // 
+        button4.Location = new System.Drawing.Point(433, 90);
+        button4.Name = "button4";
+        button4.Size = new System.Drawing.Size(50, 26);
+        button4.TabIndex = 8;
+        button4.Text = "Gene";
+        button4.UseVisualStyleBackColor = true;
+        button4.Click += button4_Click;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(button4);
+        Controls.Add(numGenLenght);
         Controls.Add(label1);
         Controls.Add(progressBar1);
         Controls.Add(checkBox1);
@@ -120,9 +146,13 @@ partial class Form1
         Controls.Add(textBox1);
         Controls.Add(button1);
         Text = "Form1";
+        ((System.ComponentModel.ISupportInitialize)numGenLenght).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.NumericUpDown numGenLenght;
+    private System.Windows.Forms.Button button4;
 
     private System.Windows.Forms.Label label1;
 
