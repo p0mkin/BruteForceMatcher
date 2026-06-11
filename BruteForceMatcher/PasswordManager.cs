@@ -4,7 +4,7 @@ namespace BruteForceMatcher
 {
     public class PasswordManager
     {
-        // REQUIREMENT 4b: Random password generation based on GUI selector length
+        // 4.b.
         public static string GenerateRandomPassword(int length)
         {
             var random = new Random();

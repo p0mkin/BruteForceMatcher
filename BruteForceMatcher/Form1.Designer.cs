@@ -35,10 +35,14 @@ partial class Form1
         button3 = new System.Windows.Forms.Button();
         checkBox1 = new System.Windows.Forms.CheckBox();
         progressBar1 = new System.Windows.Forms.ProgressBar();
-        label1 = new System.Windows.Forms.Label();
-        numGenLenght = new System.Windows.Forms.NumericUpDown();
+        numericUpDown1 = new System.Windows.Forms.NumericUpDown();
         button4 = new System.Windows.Forms.Button();
-        ((System.ComponentModel.ISupportInitialize)numGenLenght).BeginInit();
+        checkBox2 = new System.Windows.Forms.CheckBox();
+        label1 = new System.Windows.Forms.Label();
+        label2 = new System.Windows.Forms.Label();
+        checkBox3 = new System.Windows.Forms.CheckBox();
+        label3 = new System.Windows.Forms.Label();
+        ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
         SuspendLayout();
         // 
         // button1
@@ -50,6 +54,7 @@ partial class Form1
         button1.TabIndex = 0;
         button1.Text = "Set\r\n";
         button1.UseVisualStyleBackColor = true;
+        button1.Visible = false;
         button1.Click += button1_Click;
         // 
         // textBox1
@@ -58,6 +63,7 @@ partial class Form1
         textBox1.Name = "textBox1";
         textBox1.Size = new System.Drawing.Size(388, 27);
         textBox1.TabIndex = 1;
+        textBox1.Visible = false;
         textBox1.TextChanged += textBox1_TextChanged;
         // 
         // button2
@@ -69,11 +75,11 @@ partial class Form1
         button2.TabIndex = 2;
         button2.Text = "Start Attack";
         button2.UseVisualStyleBackColor = true;
+        button2.Visible = false;
         button2.Click += button2_Click;
         // 
         // button3
         // 
-        button3.Enabled = false;
         button3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
         button3.Location = new System.Drawing.Point(684, 383);
         button3.Name = "button3";
@@ -81,6 +87,7 @@ partial class Form1
         button3.TabIndex = 3;
         button3.Text = "Stop Attack";
         button3.UseVisualStyleBackColor = true;
+        button3.Visible = false;
         button3.Click += button3_Click;
         // 
         // checkBox1
@@ -91,6 +98,7 @@ partial class Form1
         checkBox1.TabIndex = 4;
         checkBox1.Text = "Use Multi-Threading";
         checkBox1.UseVisualStyleBackColor = true;
+        checkBox1.Visible = false;
         checkBox1.CheckedChanged += checkBox1_CheckedChanged_2;
         // 
         // progressBar1
@@ -100,26 +108,20 @@ partial class Form1
         progressBar1.Name = "progressBar1";
         progressBar1.Size = new System.Drawing.Size(525, 42);
         progressBar1.TabIndex = 5;
+        progressBar1.Visible = false;
+        progressBar1.Click += progressBar1_Click;
         // 
-        // label1
+        // numericUpDown1
         // 
-        label1.Location = new System.Drawing.Point(38, 354);
-        label1.Name = "label1";
-        label1.Size = new System.Drawing.Size(216, 23);
-        label1.TabIndex = 6;
-        label1.Text = "Elapsed Time:";
-        label1.Click += label1_Click;
-        // 
-        // numGenLenght
-        // 
-        numGenLenght.Location = new System.Drawing.Point(389, 90);
-        numGenLenght.Maximum = new decimal(new int[] { 16, 0, 0, 0 });
-        numGenLenght.Minimum = new decimal(new int[] { 4, 0, 0, 0 });
-        numGenLenght.Name = "numGenLenght";
-        numGenLenght.Size = new System.Drawing.Size(37, 27);
-        numGenLenght.TabIndex = 7;
-        numGenLenght.Value = new decimal(new int[] { 4, 0, 0, 0 });
-        numGenLenght.ValueChanged += numericUpDown1_ValueChanged;
+        numericUpDown1.Location = new System.Drawing.Point(389, 90);
+        numericUpDown1.Maximum = new decimal(new int[] { 16, 0, 0, 0 });
+        numericUpDown1.Minimum = new decimal(new int[] { 4, 0, 0, 0 });
+        numericUpDown1.Name = "numericUpDown1";
+        numericUpDown1.Size = new System.Drawing.Size(37, 27);
+        numericUpDown1.TabIndex = 7;
+        numericUpDown1.Value = new decimal(new int[] { 4, 0, 0, 0 });
+        numericUpDown1.Visible = false;
+        numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
         // 
         // button4
         // 
@@ -129,29 +131,89 @@ partial class Form1
         button4.TabIndex = 8;
         button4.Text = "Gene";
         button4.UseVisualStyleBackColor = true;
+        button4.Visible = false;
         button4.Click += button4_Click;
+        // 
+        // checkBox2
+        // 
+        checkBox2.Location = new System.Drawing.Point(569, 347);
+        checkBox2.Name = "checkBox2";
+        checkBox2.Size = new System.Drawing.Size(162, 19);
+        checkBox2.TabIndex = 10;
+        checkBox2.Text = "checkBox2";
+        checkBox2.UseVisualStyleBackColor = true;
+        // 
+        // label1
+        // 
+        label1.Location = new System.Drawing.Point(38, 346);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(260, 29);
+        label1.TabIndex = 9;
+        label1.Text = "Time Elapsed:";
+        label1.Click += label1_Click_1;
+        // 
+        // label2
+        // 
+        label2.Location = new System.Drawing.Point(304, 346);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(64, 29);
+        label2.TabIndex = 10;
+        label2.Text = "Current:";
+        label2.Click += label2_Click_1;
+        // 
+        // checkBox3
+        // 
+        checkBox3.Location = new System.Drawing.Point(569, 306);
+        checkBox3.Name = "checkBox3";
+        checkBox3.Size = new System.Drawing.Size(164, 24);
+        checkBox3.TabIndex = 11;
+        checkBox3.Text = "Live Updates";
+        checkBox3.UseVisualStyleBackColor = true;
+        checkBox3.CheckedChanged += checkBox3_CheckedChanged;
+        // 
+        // label3
+        // 
+        label3.BackColor = System.Drawing.SystemColors.Info;
+        label3.Location = new System.Drawing.Point(374, 345);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(184, 30);
+        label3.TabIndex = 12;
+        label3.Text = "Enable Live Updates";
+        label3.Click += label3_Click;
         // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        BackColor = System.Drawing.SystemColors.Control;
         ClientSize = new System.Drawing.Size(800, 450);
-        Controls.Add(button4);
-        Controls.Add(numGenLenght);
+        Controls.Add(label3);
+        Controls.Add(checkBox3);
+        Controls.Add(label2);
         Controls.Add(label1);
+        Controls.Add(button4);
+        Controls.Add(numericUpDown1);
         Controls.Add(progressBar1);
         Controls.Add(checkBox1);
         Controls.Add(button3);
         Controls.Add(button2);
         Controls.Add(textBox1);
         Controls.Add(button1);
-        Text = "Form1";
-        ((System.ComponentModel.ISupportInitialize)numGenLenght).EndInit();
+        Location = new System.Drawing.Point(19, 19);
+        ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
 
-    private System.Windows.Forms.NumericUpDown numGenLenght;
+    private System.Windows.Forms.Label label3;
+
+    private System.Windows.Forms.CheckBox checkBox3;
+
+    private System.Windows.Forms.CheckBox checkBox2;
+
+    private System.Windows.Forms.Label label2;
+
+    private System.Windows.Forms.NumericUpDown numericUpDown1;
     private System.Windows.Forms.Button button4;
 
     private System.Windows.Forms.Label label1;

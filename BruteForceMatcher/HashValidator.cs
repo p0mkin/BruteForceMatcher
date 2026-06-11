@@ -6,7 +6,7 @@ namespace BruteForceMatcher
 {
     public class HashValidator
     {
-        private const string StaticSalt = "Druska123"; 
+        private const string StaticSalt = "Druska123";  // 4.a.
         
         private readonly string _targetHash;
         public HashValidator(string targetHash)   // Save hash 
