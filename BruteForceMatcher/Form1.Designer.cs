@@ -54,7 +54,7 @@ partial class Form1
         button1.TabIndex = 0;
         button1.Text = "Set\r\n";
         button1.UseVisualStyleBackColor = true;
-        button1.Visible = false;
+        button1.Visible = true;
         button1.Click += button1_Click;
         // 
         // textBox1
@@ -63,7 +63,7 @@ partial class Form1
         textBox1.Name = "textBox1";
         textBox1.Size = new System.Drawing.Size(388, 27);
         textBox1.TabIndex = 1;
-        textBox1.Visible = false;
+        textBox1.Visible = true;
         textBox1.TextChanged += textBox1_TextChanged;
         // 
         // button2
@@ -75,7 +75,7 @@ partial class Form1
         button2.TabIndex = 2;
         button2.Text = "Start Attack";
         button2.UseVisualStyleBackColor = true;
-        button2.Visible = false;
+        button2.Visible = true;
         button2.Click += button2_Click;
         // 
         // button3
@@ -87,7 +87,7 @@ partial class Form1
         button3.TabIndex = 3;
         button3.Text = "Stop Attack";
         button3.UseVisualStyleBackColor = true;
-        button3.Visible = false;
+        button3.Visible = true;
         button3.Click += button3_Click;
         // 
         // checkBox1
@@ -98,7 +98,7 @@ partial class Form1
         checkBox1.TabIndex = 4;
         checkBox1.Text = "Use Multi-Threading";
         checkBox1.UseVisualStyleBackColor = true;
-        checkBox1.Visible = false;
+        checkBox1.Visible = true;
         checkBox1.CheckedChanged += checkBox1_CheckedChanged_2;
         // 
         // progressBar1
@@ -108,7 +108,7 @@ partial class Form1
         progressBar1.Name = "progressBar1";
         progressBar1.Size = new System.Drawing.Size(525, 42);
         progressBar1.TabIndex = 5;
-        progressBar1.Visible = false;
+        progressBar1.Visible = true;
         progressBar1.Click += progressBar1_Click;
         // 
         // numericUpDown1
@@ -120,7 +120,7 @@ partial class Form1
         numericUpDown1.Size = new System.Drawing.Size(37, 27);
         numericUpDown1.TabIndex = 7;
         numericUpDown1.Value = new decimal(new int[] { 4, 0, 0, 0 });
-        numericUpDown1.Visible = false;
+        numericUpDown1.Visible = true;
         numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
         // 
         // button4
@@ -131,7 +131,7 @@ partial class Form1
         button4.TabIndex = 8;
         button4.Text = "Gene";
         button4.UseVisualStyleBackColor = true;
-        button4.Visible = false;
+        button4.Visible = true;
         button4.Click += button4_Click;
         // 
         // checkBox2

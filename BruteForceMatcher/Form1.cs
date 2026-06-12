@@ -82,12 +82,12 @@ namespace BruteForceMatcher
             // 4. Output the results
             if (_cancellationTokenSource.IsCancellationRequested)
             {
-                label3.Text = "Result: Attack Stopped manually.";
+                label3.Text = "Attack Stopped manually.";
                 progressBar1.Value = 0; // Reset bar if stopped
             }
             else if (result != null)
             {
-                label3.Text = $"Result: Found! Password is '{result}'";
+                label3.Text = $"Found! Password is '{result}'";
                 label1.Text = $"Elapsed Time: {_stopwatch.Elapsed.TotalSeconds:F2} seconds";
             }
             else
