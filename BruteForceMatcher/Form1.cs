@@ -11,10 +11,26 @@ namespace BruteForceMatcher
         private string _targetHashToCrack;   // hashed password
         private CancellationTokenSource _cancellationTokenSource; 
         private Stopwatch _stopwatch; 
+        
+        private System.Windows.Forms.Timer _uiTimer; 
+        private long _lastLiveUpdate = 0; 
 
         public Form1()
         {
             InitializeComponent();
+            
+            // ADDED: Setup Timer for live clock
+            _uiTimer = new System.Windows.Forms.Timer();
+            _uiTimer.Interval = 100; 
+            _uiTimer.Tick += UiTimer_Tick;
+        }
+        
+        private void UiTimer_Tick(object sender, EventArgs e)
+        {
+            if (_stopwatch != null && _stopwatch.IsRunning)
+            {
+                label1.Text = $"Elapsed Time: {_stopwatch.Elapsed:hh\\:mm\\:ss\\.ff}";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)  // MANUALLY SET PASSWORD
@@ -52,7 +68,7 @@ namespace BruteForceMatcher
             // 1. Lock the UI and start the Progress Bar animation
             button2.Enabled = false; 
             button3.Enabled = true;  
-            label3.Text = "Result: Attacking...";
+            label3.Text = "Attacking..."; 
             label1.Text = "Elapsed Time: 00:00:00";
             
             progressBar1.Style = ProgressBarStyle.Marquee; // Makes the bar slide
@@ -61,6 +77,7 @@ namespace BruteForceMatcher
             _cancellationTokenSource = new CancellationTokenSource();
             _stopwatch = new Stopwatch();
             _stopwatch.Start();
+            _uiTimer.Start(); 
 
             bool useMultiThreading = checkBox1.Checked;
             bool showLiveUpdates = checkBox3.Checked;
@@ -71,19 +88,21 @@ namespace BruteForceMatcher
             // 2. Run the engine in the background
             string result = await Task.Run(() => engine.RunAttack(useMultiThreading, _cancellationTokenSource.Token));
 
-            // 3. Stop timers and reset the Progress Bar
+            
             _stopwatch.Stop();
-            progressBar1.Style = ProgressBarStyle.Blocks; // Stops the sliding animation
-            progressBar1.Value = 100; // Fills the bar to show completion
+            _uiTimer.Stop(); 
+            
+            progressBar1.Style = ProgressBarStyle.Blocks; 
+            progressBar1.Value = 100; 
             
             button2.Enabled = true; 
             button3.Enabled = false; 
 
-            // 4. Output the results
+            // 3. Output the results
             if (_cancellationTokenSource.IsCancellationRequested)
             {
                 label3.Text = "Attack Stopped manually.";
-                progressBar1.Value = 0; // Reset bar if stopped
+                progressBar1.Value = 0; 
             }
             else if (result != null)
             {
@@ -92,7 +111,7 @@ namespace BruteForceMatcher
             }
             else
             {
-                label3.Text = "Result: Not found.";
+                label3.Text = "Not found.";
                 progressBar1.Value = 0;
             }
         }
@@ -105,16 +124,24 @@ namespace BruteForceMatcher
                 button3.Enabled = false; 
             }
         }
+        
         // UI, prevent cross-thread crashes for Live Updates
         private void UpdateLiveGuessLabel(string currentGuess)
         {
-            if (label2.InvokeRequired)
+            // ADDED: 100ms Throttle so the app doesn't freezes
+            if (Environment.TickCount64 - _lastLiveUpdate > 100)
             {
-                label2.Invoke(new Action(() => label2.Text = $"Current: {currentGuess}"));
-            }
-            else
-            {
-                label2.Text = $"Current: {currentGuess}";
+                _lastLiveUpdate = Environment.TickCount64;
+                
+                // FIXED: Pointed to label3 (the yellow box) instead of the static label2
+                if (label3.InvokeRequired)
+                {
+                    label3.BeginInvoke(new Action(() => label3.Text = currentGuess));
+                }
+                else
+                {
+                    label3.Text = currentGuess;
+                }
             }
         }
 
