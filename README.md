@@ -1,4 +1,5 @@
 # BruteForceMatcher
+<img width="788" height="482" alt="image" src="https://github.com/user-attachments/assets/6a5b90ea-6791-4019-bec3-f93ebc3ebf7a" />
 
 ## Objective
 Create an application for password matching using a multi-threaded brute-force attack. The application generates a random password, hashes it using SHA256 with a static salt, and attempts to crack it by checking all combinations from length 1 to 6.
