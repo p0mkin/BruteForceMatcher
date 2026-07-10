@@ -37,7 +37,7 @@ namespace BruteForceMatcher
                     var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = maxThreads, CancellationToken = token };
 
                     try
-                    {       // vietoj for() , .foreach padalina musu _chars alfabeta lygiomis dalimis visiem cores 
+                    {       // vietoj for() , .foreach padalina musu _chars alfabeta dinamiskai visosm gijomis, kuri baigia anksciau gauna sekanti char
                         Parallel.ForEach(_chars, parallelOptions, (firstChar, state) =>
                         {
                             RecursiveCrack(firstChar.ToString(), length, token, state);

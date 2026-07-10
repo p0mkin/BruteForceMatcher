@@ -71,7 +71,7 @@ namespace BruteForceMatcher
             label3.Text = "Attacking..."; 
             label1.Text = "Elapsed Time: 00:00:00";
             
-            progressBar1.Style = ProgressBarStyle.Marquee; // Makes the bar slide
+            progressBar1.Style = ProgressBarStyle.Marquee; // Makes the bar slide side to side
             progressBar1.MarqueeAnimationSpeed = 30;
 
             _cancellationTokenSource = new CancellationTokenSource();
@@ -128,12 +128,12 @@ namespace BruteForceMatcher
         // UI, prevent cross-thread crashes for Live Updates
         private void UpdateLiveGuessLabel(string currentGuess)
         {
-            // ADDED: 100ms Throttle so the app doesn't freezes
+            // ADDED: 100ms Throttle so the app doesn't freeze
             if (Environment.TickCount64 - _lastLiveUpdate > 100)
             {
                 _lastLiveUpdate = Environment.TickCount64;
                 
-                // FIXED: Pointed to label3 (the yellow box) instead of the static label2
+                // FIX: Pointed to label3 instad of label2
                 if (label3.InvokeRequired)
                 {
                     label3.BeginInvoke(new Action(() => label3.Text = currentGuess));
